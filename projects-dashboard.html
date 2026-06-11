@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דשבורד פרויקטים — ABC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF9F5; --panel:#FFFFFF; --soft:#F3EFE7; --border:#E5E1D6;
+  --text:#2B281F; --dim:#7A766C; --faint:#A8A498;
+  --orange:#D97757; --orange-deep:#C15F3C; --orange-bg:#FBEEE8;
+  --green:#3E9B63; --green-bg:#E9F4ED; --yellow:#C28E0E; --yellow-bg:#FAF3DF; --blue:#4A7DBD;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Rubik',sans-serif;font-size:15px;line-height:1.65;padding:30px 18px 60px}
+.wrap{max-width:1080px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',monospace}
+header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px}
+header h1{font-size:1.45rem;font-weight:700}
+header .star{color:var(--orange);margin-inline-end:6px}
+header .meta{color:var(--dim);font-size:.86rem;margin-top:2px}
+.navbtn{display:inline-block;background:var(--panel);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:9px;font-weight:600;font-size:.85rem;text-decoration:none;transition:all .15s}
+.navbtn:hover{border-color:var(--orange);color:var(--orange-deep)}
+
+h2{font-size:.95rem;font-weight:700;margin:26px 0 10px;color:var(--orange-deep);letter-spacing:.03em}
+.now{display:flex;gap:10px;flex-wrap:wrap}
+.nowchip{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:9px 15px;font-size:.86rem;display:flex;gap:8px;align-items:baseline}
+.nowchip .d{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite}
+.nowchip b{font-weight:700}
+.nowchip .w{color:var(--dim)}
+.nowchip .p{color:var(--orange-deep);font-size:.74rem;font-weight:600;background:var(--orange-bg);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.mile{background:var(--yellow-bg);border:1px solid #EBDDB3;border-radius:11px;padding:9px 15px;font-size:.88rem;margin-bottom:8px}
+.mile .dt{font-weight:700;color:var(--yellow);font-family:'IBM Plex Mono',monospace;font-size:.8rem;margin-inline-end:8px}
+
+.proj{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(43,40,31,.05)}
+.proj .head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.proj .head b{font-size:1.12rem;font-weight:700}
+.proj .type{color:var(--dim);font-size:.8rem}
+.pill{border-radius:999px;padding:2px 12px;font-size:.76rem;font-weight:600}
+.pill.active{background:var(--green-bg);color:var(--green)}
+.pill.planning{background:var(--yellow-bg);color:var(--yellow)}
+.pill.done{background:var(--soft);color:var(--dim)}
+.proj .eta{margin-inline-start:auto;color:var(--dim);font-size:.82rem;white-space:nowrap}
+.proj .eta b{color:var(--text)}
+.barwrap{display:flex;align-items:center;gap:10px;margin:12px 0 4px}
+.bar{flex:1;height:9px;background:var(--soft);border-radius:99px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-deep));border-radius:99px;transition:width .6s}
+.pct{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:600;color:var(--orange-deep);min-width:38px}
+.pnote{color:var(--dim);font-size:.82rem;margin-bottom:6px}
+
+.pipe{display:flex;align-items:flex-start;overflow-x:auto;padding:18px 4px 6px;position:relative}
+.pipe::before{content:'';position:absolute;top:31px;right:55px;left:55px;height:2px;background:var(--border)}
+.station{flex:1;min-width:108px;text-align:center;position:relative;padding:0 4px}
+.stdot{width:28px;height:28px;border-radius:50%;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;position:relative;z-index:1;background:var(--panel);border:2px solid var(--border);color:var(--faint)}
+.station.done .stdot{background:var(--green);border-color:var(--green);color:#fff}
+.station.active .stdot{border-color:var(--orange);color:var(--orange);animation:ring 1.8s infinite}
+.station.active .nowtag{display:inline-block}
+.nowtag{display:none;position:absolute;top:-16px;right:50%;transform:translateX(50%);background:var(--orange);color:#fff;font-size:.66rem;font-weight:700;border-radius:999px;padding:1px 9px;white-space:nowrap;z-index:2}
+.station .nm{font-size:.8rem;font-weight:600;line-height:1.3}
+.station.done .nm{color:var(--dim)}
+.station .ow{font-size:.72rem;color:var(--orange-deep);font-weight:600}
+.station.done .ow{color:var(--faint)}
+.station .et{font-size:.68rem;color:var(--faint);font-family:'IBM Plex Mono',monospace}
+.station .tip{display:none;position:absolute;z-index:40;top:calc(100% + 4px);right:50%;transform:translateX(50%);min-width:170px;max-width:230px;background:var(--text);color:#FBFAF6;border-radius:9px;padding:8px 11px;font-size:.74rem;line-height:1.5;box-shadow:0 8px 22px rgba(43,40,31,.25);text-align:right}
+.station:hover .tip{display:block}
+
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(217,119,87,.4)}75%{box-shadow:0 0 0 9px rgba(217,119,87,0)}100%{box-shadow:0 0 0 0 rgba(217,119,87,0)}}
+@keyframes pulse{50%{opacity:.4}}
+
+footer{margin-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);padding-top:14px}
+footer .model{color:var(--orange-deep);font-weight:600}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <div>
+    <h1><span class="star">✻</span>דשבורד פרויקטים · ABC</h1>
+    <div class="meta">עודכן: <b id="updated" class="mono"></b> · על ידי <b id="updatedBy"></b> · הנתונים: <span class="mono">projects-data.js</span></div>
+  </div>
+  <a class="navbtn" href="team-dashboard.html">👥 דשבורד הצוות ←</a>
+</header>
+
+<h2>עכשיו במשרד</h2>
+<div class="now" id="now"></div>
+
+<h2>אבני דרך קרובות</h2>
+<div id="miles"></div>
+
+<h2>הפרויקטים</h2>
+<div id="projects"></div>
+
+<footer>
+  <span><span class="model mono">claude-opus-4-8</span> · אדם COO · הדף מתרענן לבד כל 10 דקות</span>
+  <span>ריחוף על תחנה מציג פרטים · ✓ הושלם · ● עכשיו · ○ ממתין</span>
+</footer>
+
+</div>
+
+<script src="projects-data.js"></script>
+<script>
+const D = PROJECTS_DATA;
+document.getElementById('updated').textContent = D.updated;
+document.getElementById('updatedBy').textContent = D.updatedBy;
+
+document.getElementById('now').innerHTML = D.nowBoard.map(n =>
+  `<div class="nowchip"><span class="d"></span><b>${n.who}</b><span class="w">${n.what}</span><span class="p">${n.proj}</span></div>`).join('');
+
+document.getElementById('miles').innerHTML = D.milestones.map(m =>
+  `<div class="mile"><span class="dt">${m.date}</span>${m.txt}</div>`).join('');
+
+function station(s){
+  const sym = s.state === 'done' ? '✓' : s.state === 'active' ? '●' : '○';
+  return `<div class="station ${s.state}">
+    <span class="nowtag">עכשיו</span>
+    <div class="stdot">${sym}</div>
+    <div class="nm">${s.name}</div>
+    <div class="ow">${s.owner}</div>
+    ${s.eta ? `<div class="et">${s.eta}</div>` : ''}
+    ${s.note ? `<div class="tip">${s.note}</div>` : ''}
+  </div>`;
+}
+
+document.getElementById('projects').innerHTML = D.projects.map(p => `
+  <div class="proj">
+    <div class="head">
+      <b>${p.name}</b>
+      <span class="type">${p.type}</span>
+      <span class="pill ${p.status}">${p.statusText}</span>
+      <span class="eta">סיום משוער: <b>${p.eta}</b></span>
+    </div>
+    <div class="barwrap"><div class="bar"><div class="fill" style="width:${p.progress}%"></div></div><span class="pct">${p.progress}%</span></div>
+    <div class="pnote">${p.note} · התחיל: ${p.started}</div>
+    <div class="pipe">${p.stations.map(station).join('')}</div>
+  </div>`).join('');
+
+setTimeout(() => location.reload(), 10 * 60 * 1000);
+</script>
+</body>
+</html>
