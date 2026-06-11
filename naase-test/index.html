@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  נעשה ונשמע — דף מכירה | ונשמרתם
+  TEST BUILD (ריצת מבחן של פס הייצור — מוצר פיקטיבי)
+  הקופי הוא קופי טסט וממתין לבריף מוצר אמיתי מיוסי/שי.
+  נבנה ע"י בצלאל (4.2) · תמונות: רפאל (4.1) · חיבורים: גבריאל (4.3)
+  חריצי חיבור מסומנים ב: CARDCOM_PAYMENT_URL / IMG-* / COUNTER TEST VALUES
+  ============================================================
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1660473435077269');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1660473435077269&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- PIXEL NOTE לגבריאל: PageView יורה כאן בטעינה. InitiateCheckout יורה בלחיצה על כפתורי הרכישה (ראה .js-buy למטה).
+       Purchase לא יורה בדף הזה — לפי הקונבנציה של הדפים החיים הוא יורה בדף החזרה / postback של קארדקום. גבריאל סוגר. -->
+
+  <title>נעשה ונשמע | ונשמרתם</title>
+  <meta name="description" content="נעשה ונשמע — קורס דיגיטלי של שי פרלא לגברים חרדים שיושבים רוב היום. עיקרון אחד בצלחת, פעמיים בשבוע תנועה, בלי משקל ובלי מהפכה. ₪97 במחיר השקה.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="נעשה ונשמע | ונשמרתם">
+  <meta property="og:description" content="קודם עושים צעד קטן, אחר כך מבינים כמה הוא משנה. השיטה של שי פרלא לאנרגיה וגב שמחזיק — בלי לשנות את החיים.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script>
+    // Auto-inject utm_source for campaign tracking (קונבנציה קיימת מהדפים החיים)
+    (function () {
+      try {
+        var url = new URL(window.location.href);
+        if (!url.searchParams.get('utm_source')) {
+          url.searchParams.set('utm_source', 'facebook');
+          window.history.replaceState(null, '', url.toString());
+        }
+      } catch (e) { }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #fed712;
+      --gold-ink: #9a7400;
+      --ink: #2d2d2d;
+      --gold-dim: rgba(254, 215, 18, 0.18);
+      --dark: #ffffff;
+      --dark2: #f5f3ee;
+      --dark3: #ebe8e0;
+      --white: #2d2d2d;
+      --text-soft: rgba(0, 0, 0, 0.64);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'Rubik', 'Arial', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      direction: rtl;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: var(--dark);
+      padding: 12px 24px;
+      text-align: right;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(254, 215, 18, 0.15);
+    }
+    .logo-wrap { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-img { height: 56px; width: auto; display: block; }
+    .logo-tag { color: var(--text-soft); font-size: 0.85rem; font-weight: 500; }
+
+    /* ─── HERO (1) ─── */
+    .hero {
+      padding: 60px 24px 50px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--dark3) 0%, var(--dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(254,215,18,0.09) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .pre-headline {
+      font-size: 1.05rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 22px;
+      opacity: 0.9;
+    }
+    .main-headline {
+      font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      color: var(--white);
+      line-height: 1.3;
+      max-width: 760px;
+      margin: 0 auto 35px;
+    }
+    .main-headline .hl { color: var(--gold); }
+    .sub-box {
+      background: rgba(254,215,18,0.07);
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 28px 32px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: right;
+    }
+    .sub-box-label { font-weight: 700; color: var(--gold); font-size: 1.05rem; margin-bottom: 10px; }
+    .sub-box p { color: var(--text-soft); font-size: 1rem; line-height: 1.75; }
+    .sub-box strong { color: var(--white); }
+    .hero-cta-wrap { margin-top: 32px; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--gold), transparent);
+      border: none;
+      margin: 0;
+    }
+
+    /* ─── IMAGE SLOTS (לרפאל) ─── */
+    .img-slot {
+      border: 2px dashed var(--gold);
+      background: rgba(254, 215, 18, 0.06);
+      border-radius: 10px;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 46px 28px;
+      text-align: center;
+      color: var(--text-soft);
+    }
+    .img-slot .slot-name {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .img-slot p { font-size: 0.92rem; line-height: 1.7; max-width: 640px; margin: 0 auto; }
+    .img-slot p strong { color: var(--gold); }
+    .img-band-section { padding: 40px 24px; }
+
+    /* ─── SECTIONS ─── */
+    .section-container { max-width: 720px; margin: 0 auto; }
+    .section-title {
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--gold);
+      margin-bottom: 30px;
+    }
+
+    /* ─── PAIN (2) ─── */
+    .pain-section { padding: 60px 24px; background: var(--dark2); }
+    .pain-list { list-style: none; }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(254, 215, 18, 0.15);
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+    .pain-list li:last-child { border-bottom: none; font-weight: 700; }
+    .arrow-bullet { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; line-height: 1; }
+    .pain-after { margin-top: 26px; color: var(--text-soft); font-size: 1.05rem; line-height: 1.8; }
+    .pain-after strong { color: var(--white); }
+
+    /* ─── BRIDGE (3) ─── */
+    .bridge {
+      padding: 55px 24px;
+      text-align: center;
+      background: var(--dark3);
+      position: relative;
+      overflow: hidden;
+    }
+    .bridge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(254,215,18,0.13) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .bridge > * { position: relative; z-index: 1; }
+    .bridge-line {
+      display: inline-block;
+      border-top: 3px solid var(--gold);
+      border-bottom: 3px solid var(--gold);
+      padding: 18px 36px;
+    }
+    .bridge-text {
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--gold);
+      letter-spacing: -0.5px;
+    }
+    .bridge-sub { margin-top: 22px; color: var(--text-soft); font-size: 1.05rem; }
+
+    /* ─── INSIDE (4) ─── */
+    .inside-section { background: var(--dark2); padding: 60px 24px; }
+    .inside-list { list-style: none; margin-top: 10px; }
+    .inside-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(254, 215, 18, 0.12);
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .inside-list li:last-child { border-bottom: none; }
+    .inside-list strong { color: var(--white); }
+    .num-badge {
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 0.95rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ─── WHO FOR / NOT FOR (5+6) ─── */
+    .who-section { padding: 60px 24px; background: var(--dark); }
+    .who-section.alt { background: var(--dark3); }
+    .who-list { list-style: none; }
+    .who-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+    .who-mark { color: var(--gold); font-weight: 900; flex-shrink: 0; margin-top: 2px; font-size: 1.2rem; }
+    .who-list.not li .who-mark { color: #ff6b6b; }
+
+    /* ─── TESTIMONIALS (7) ─── */
+    .testimonials-section { padding: 60px 24px; background: var(--dark2); }
+    .testimonial-grid { display: grid; gap: 18px; max-width: 720px; margin: 30px auto 0; }
+    .testimonial-card {
+      background: var(--dark3);
+      border: 2px dashed var(--gold);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .testimonial-placeholder-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .testimonial-text { color: var(--text-soft); font-style: italic; margin-bottom: 14px; line-height: 1.7; }
+    .testimonial-author { color: var(--gold); font-weight: 700; font-size: 0.95rem; }
+    .testimonials-note { max-width: 720px; margin: 22px auto 0; color: rgba(255,255,255,0.6); font-size: 0.9rem; text-align: center; }
+
+    /* ─── BONUSES (8) ─── */
+    .bonus-section { padding: 65px 24px; background: var(--dark3); }
+    .bonus-intro {
+      max-width: 720px;
+      margin: 0 auto 30px;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .bonus-grid { display: grid; gap: 22px; max-width: 720px; margin: 0 auto; }
+    .bonus-card {
+      background: var(--dark2);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 28px 24px 24px;
+      position: relative;
+    }
+    .bonus-tag {
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 0.8rem;
+      padding: 5px 14px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    .bonus-title { color: var(--gold); font-weight: 900; font-size: 1.2rem; margin-bottom: 10px; }
+    .bonus-desc { color: var(--text-soft); line-height: 1.7; }
+    .bonus-value { color: var(--white); font-size: 0.9rem; margin-top: 14px; font-style: italic; opacity: 0.7; }
+
+    /* ─── COUNTER (9) — מד מצטרפים, לא שעון ─── */
+    .counter-section { padding: 50px 24px; background: var(--dark); text-align: center; }
+    .counter-wrap { max-width: 520px; margin: 0 auto; }
+    .counter-label {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 14px;
+      letter-spacing: 1px;
+    }
+    .counter-numbers {
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .counter-numbers .current { color: var(--gold); }
+    .counter-numbers .total { color: var(--text-soft); }
+    .counter-bar {
+      height: 16px;
+      background: var(--dark3);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 1px solid rgba(254, 215, 18, 0.3);
+    }
+    .counter-fill {
+      height: 100%;
+      background: var(--gold);
+      width: var(--progress, 42%);
+      transition: width 0.5s ease;
+      border-radius: 8px;
+    }
+    .counter-text { color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; }
+    .counter-text strong { color: var(--gold); }
+
+    /* ─── PRICE (10) ─── */
+    .price-section { padding: 65px 24px; background: var(--dark3); text-align: center; }
+    .price-box {
+      max-width: 480px;
+      margin: 0 auto;
+      border: 3px solid var(--gold);
+      border-radius: 14px;
+      padding: 38px 30px;
+      background: var(--dark);
+    }
+    .price-old {
+      color: var(--text-soft);
+      font-size: 1.2rem;
+      text-decoration: line-through;
+      text-decoration-color: rgba(254, 215, 18, 0.6);
+      margin-bottom: 6px;
+    }
+    .price-now {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 7vw, 3.5rem);
+      line-height: 1;
+    }
+    .price-suffix { color: var(--text-soft); font-size: 1rem; margin-top: 10px; }
+    .price-cta {
+      display: inline-block;
+      margin-top: 30px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 1.2rem;
+      padding: 18px 50px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .price-cta:hover { background: #f5cb00; }
+    .price-cta:active { transform: scale(0.99); }
+    .price-note { margin-top: 16px; color: rgba(255,255,255,0.55); font-size: 0.88rem; }
+
+    /* ─── FAQ (11) ─── */
+    .faq-section { padding: 65px 24px; background: var(--dark2); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      border: 1px solid rgba(254, 215, 18, 0.25);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: var(--dark3);
+    }
+    .faq-question {
+      padding: 18px 22px;
+      cursor: pointer;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question::after {
+      content: '+';
+      color: var(--gold);
+      font-size: 1.6rem;
+      font-weight: 900;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-question::after { content: '−'; }
+    .faq-answer { display: none; padding: 0 22px 20px; color: var(--text-soft); line-height: 1.75; }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ─── AUTHORITY (12) ─── */
+    .authority-section { padding: 65px 24px; background: var(--dark); }
+    .authority-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      gap: 35px;
+      align-items: flex-start;
+    }
+    .shai-photo-wrap { flex-shrink: 0; width: 200px; }
+    .shai-photo-wrap .img-slot { padding: 30px 14px; max-width: 200px; }
+    .authority-content { flex: 1; }
+    .authority-label {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .authority-name { font-weight: 900; font-size: 1.6rem; color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+    .authority-text { color: var(--text-soft); font-size: 1rem; line-height: 1.75; }
+    .authority-text strong { color: var(--white); }
+    .authority-stats { display: flex; gap: 24px; margin-top: 20px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-weight: 900; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
+
+    /* ─── GUARANTEE (13) ─── */
+    .guarantee-section {
+      padding: 65px 24px;
+      background: var(--dark3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .guarantee-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(254,215,18,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .guarantee-section > * { position: relative; z-index: 1; }
+    .guarantee-seal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      border: 4px double var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      text-align: center;
+      margin: 0 auto 26px;
+    }
+    .guarantee-title {
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .guarantee-text {
+      max-width: 640px;
+      margin: 0 auto;
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .guarantee-text strong { color: var(--white); }
+
+    /* ─── CTA (כללי) + FINAL ─── */
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 1.15rem;
+      padding: 17px 48px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .cta-btn:hover { background: #f5cb00; }
+    .cta-btn:active { transform: scale(0.99); }
+    .second-cta { padding: 55px 24px; text-align: center; background: var(--dark); }
+    .second-cta p { color: var(--text-soft); margin-bottom: 24px; font-size: 1.1rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark3);
+      border-top: 1px solid rgba(254, 215, 18, 0.2);
+      padding: 22px 24px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 620px) {
+      header { padding: 10px 16px; }
+      .logo-img { height: 46px; }
+      .logo-tag { display: none; }
+      .hero { padding: 44px 20px 40px; }
+      .sub-box { padding: 22px 20px; }
+      .pain-section, .inside-section, .who-section,
+      .testimonials-section, .bonus-section, .counter-section,
+      .price-section, .faq-section, .authority-section,
+      .guarantee-section, .second-cta { padding: 48px 20px; }
+      .img-band-section { padding: 30px 16px; }
+      .price-box { padding: 30px 22px; }
+      .authority-inner { flex-direction: column; align-items: center; }
+      .shai-photo-wrap { width: 100%; max-width: 240px; }
+      .authority-content { text-align: center; }
+      .authority-stats { justify-content: center; }
+      .bonus-card { padding: 26px 20px 22px; }
+      .bridge-line { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HEADER ─── -->
+  <header>
+    <a class="logo-wrap" href="#">
+      <img class="logo-img" src="images/vnishmartem-logo.png" alt="ונשמרתם">
+      <span class="logo-tag">בריא זה חרדי</span>
+    </a>
+  </header>
+
+  <!-- ─── 1. HERO ─── -->
+  <section class="hero">
+    <p class="pre-headline">קורס דיגיטלי חדש מבית ונשמרתם — לגברים שיושבים רוב היום, ומרגישים את זה</p>
+    <h1 class="main-headline">
+      החליפה נסגרת בקושי. הגב מזכיר את עצמו בכל ישיבה. והכוח נגמר הרבה לפני היום.<br>
+      <span class="hl">לא צריך מהפכה. צריך את המינימום שמחזיק.</span>
+    </h1>
+    <div class="sub-box">
+      <div class="sub-box-label">במשפט אחד</div>
+      <p>
+        <strong>נעשה ונשמע</strong> הוא קורס מצולם קצר של שי פרלא:
+        עיקרון אחד בצלחת, פעמיים בשבוע תנועה בבית, ושגרה ששורדת שבוע אמיתי —
+        עם שבת, שמחות וסדרים מלאים.
+        <strong>בלי משקל, בלי ספירות, בלי לשנות את החיים.</strong>
+        קודם עושים צעד קטן. אחר כך מבינים כמה הוא משנה.
+      </p>
+    </div>
+    <div class="hero-cta-wrap">
+      <a href="#price" class="cta-btn" style="font-size: 1.05rem; padding: 15px 40px;">אני רוצה להתחיל — ₪97</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ─── IMG-HERO ─── -->
+  <section class="img-band-section" style="background: var(--dark);">
+    <!-- IMG-HERO — רפאל 4.1: hero-end-of-day.webp — הנכס המוכח מהמשפך החי של ונשמרתם (אותו תפקיד בדיוק בדף מעבדות לחירות) -->
+    <img src="images/hero-end-of-day.webp"
+         alt="גבר חרדי בן ארבעים פלוס בסוף היום — נרדם ליד השולחן, הילדים עוד משחקים ברקע"
+         style="display: block; width: 100%; max-width: 920px; margin: 0 auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; filter: brightness(0.7);">
+  </section>
+
+  <!-- ─── 2. PAIN ─── -->
+  <section class="pain-section">
+    <div class="section-container">
+
+      <!-- IMG-PAIN-1 — רפאל 4.1: pain-shabbat-table.jpg — רגע הכאב הקטן מנכסי המותג הקיימים (שולחן שבת, העיניים נעצמות) -->
+      <img src="images/pain-shabbat-table.jpg"
+           alt="רגע מוכר: אבא בראש שולחן השבת המלא, העיניים נעצמות באמצע הסעודה, הילדים מביטים"
+           loading="lazy"
+           style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; filter: brightness(0.7); margin-bottom: 36px;">
+
+      <h2 class="section-title">אם:</h2>
+      <ul class="pain-list">
+        <li><span class="arrow-bullet">◆</span>אתה קם בבוקר עייף יותר מאיך שהלכת לישון</li>
+        <li><span class="arrow-bullet">◆</span>בסוף סדר ב׳ אתה כבר לא לומד — אתה מחפש תנוחה שהגב יסכים איתה</li>
+        <li><span class="arrow-bullet">◆</span>במדרגות לבית הכנסת אתה מאט, כדי שלא יראו אותך מתנשף</li>
+        <li><span class="arrow-bullet">◆</span>החליפה של שבת נסגרת בקושי, ואתה מסדר אותה כל הזמן ביד</li>
+        <li><span class="arrow-bullet">◆</span>בשבע בערב הילדים רוצים אבא — ואתה רוצה רק כורסה</li>
+        <li><span class="arrow-bullet">◆</span>ידעת כבר מזמן שצריך לעשות משהו. ולא התחלת.</li>
+      </ul>
+      <p class="pain-after">
+        אז דבר ראשון — <strong>זה לא אשמתך.</strong><br>
+        כל מה שהציעו לך עד היום היה בנוי כמו מהפכה: תוכנית קשה, רשימות, שעות שאין לך.
+        מהפכות מתחילות בכוח גדול — וקורסות בשבת הראשונה.
+        לא כי אתה חלש. כי הן בנויות על סבל.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── 3. BRIDGE ─── -->
+  <section class="bridge">
+    <div class="bridge-line">
+      <p class="bridge-text">"הלוואי שהיה לי כוח גם בערב."</p>
+    </div>
+    <p class="bridge-sub">המשפט הזה לא צריך להישאר משאלה.</p>
+  </section>
+
+  <!-- ─── 4. INSIDE ─── -->
+  <section class="inside-section">
+    <div class="section-container">
+      <h2 class="section-title">מה יש בפנים</h2>
+      <ul class="inside-list">
+        <li><span class="num-badge">1</span><span><strong>21 שיעורים מצולמים קצרים</strong> — חמש עד עשר דקות כל אחד, מהטלפון או מהמחשב. בקצב שלך.</span></li>
+        <li><span class="num-badge">2</span><span><strong>עמוד הצלחת:</strong> עיקרון אחד שמסדר כל ארוחה — אף פעם לא לבד על הצלחת. בלי לשקול, בלי לספור, בלי רשימות.</span></li>
+        <li><span class="num-badge">3</span><span><strong>מתנה אחת מתוכננת ביום</strong> — איך נשארים בני אדם, בלי הרעבה ובלי התפוצצות בסוף.</span></li>
+        <li><span class="num-badge">4</span><span><strong>עמוד התנועה:</strong> פעמיים בשבוע, בבית, בלי מכון ובלי ציוד — התנועה שגוף שיושב הרבה באמת צריך.</span></li>
+        <li><span class="num-badge">5</span><span><strong>שגרת גב לשעות הישיבה</strong> — מה עושים בין הסדרים, ליד הסטנדר ובמשרד, כדי שהגב יחזיק את היום.</span></li>
+        <li><span class="num-badge">6</span><span><strong>שבת, שמחות ובין הזמנים</strong> — איך השיטה שורדת את השבוע האמיתי שלך, בלי להתחיל מחדש כל יום ראשון.</span></li>
+        <li><span class="num-badge">7</span><span><strong>נעשה ונשמע — סדר הפעולה</strong> — קודם עושים צעד קטן אחד, אחר כך מבינים. בדיוק כך נכנסים לשגרה שנשארת.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── 5. WHO FOR ─── -->
+  <section class="who-section">
+    <div class="section-container">
+      <h2 class="section-title">למי זה מתאים</h2>
+      <ul class="who-list">
+        <li><span class="who-mark">✓</span>אתה בן 35 ומעלה, ויושב רוב שעות היום — בכולל או בעבודה</li>
+        <li><span class="who-mark">✓</span>ניסית כבר דיאטות שקרסו — או שפחדת בכלל להתחיל, כי זה נראה גדול מדי</li>
+        <li><span class="who-mark">✓</span>אתה רוצה אנרגיה, גב שמחזיק ונוכחות בבית — לא תארים של חדר כושר</li>
+        <li><span class="who-mark">✓</span>אתה מוכן לצעד קטן שנשאר — במקום מהפכה שנגמרת</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── 6. WHO NOT FOR ─── -->
+  <section class="who-section alt">
+    <div class="section-container">
+      <h2 class="section-title">למי זה לא מתאים</h2>
+      <ul class="who-list not">
+        <li><span class="who-mark">✗</span>אתה מחפש תוצאה בן לילה — אין כאן קסמים, יש שיטה שמחזיקה</li>
+        <li><span class="who-mark">✗</span>אתה רוצה תוכנית של שעות בחדר כושר — זה לא המקום</li>
+        <li><span class="who-mark">✗</span>אתה מחפש עוד דיאטה שסופרים בה — אצלי אין משקל. אפס.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── 7. TESTIMONIALS (placeholder) ─── -->
+  <section class="testimonials-section">
+    <div class="section-container">
+      <h2 class="section-title">מה אומרים אלה שכבר בפנים</h2>
+    </div>
+
+    <!-- IMG-TESTIMONIALS — placeholder בכוונה (רפאל 4.1): אין עדויות אמת למוצר הזה עדיין, ועדויות לא ממציאים. נשאר ריק עד שיש הודעות אמיתיות. -->
+    <div class="img-slot" style="max-width: 720px;">
+      <span class="slot-name">IMG-TESTIMONIALS</span>
+      <p>
+        <strong>ממתין לעדויות אמת.</strong> לפני עלייה לאוויר נכנסים לכאן 3-4 צילומי מסך ווטסאפ אמיתיים מלקוחות,
+        כלשונם ובאישור הכותבים — עדויות תפקוד בלבד: גב שמחזיק, אנרגיה בערב, מדרגות בלי עצירה, חליפה שנסגרת.<br>
+        <strong>בלי</strong> תמונות גוף, <strong>בלי</strong> מספרים. שמות פרטיים או טשטוש. (צילומי מסך אנכיים, עד 480px רוחב כל אחד.)<br>
+        עד שזה קורה — הדף לא עולה לאוויר.
+      </p>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <span class="testimonial-placeholder-tag">PLACEHOLDER — נדרשת עדות אמיתית</span>
+        <p class="testimonial-text">[כאן תיכנס עדות ווטסאפ אמיתית — תפקוד, לא מספר. דוגמה לסגנון: גב שמחזיק סדר שלם, מדרגות בלי עצירה, כוח בערב לילדים.]</p>
+        <p class="testimonial-author">— [שם פרטי, עיר]</p>
+      </div>
+      <div class="testimonial-card">
+        <span class="testimonial-placeholder-tag">PLACEHOLDER — נדרשת עדות אמיתית</span>
+        <p class="testimonial-text">[עדות שנייה — רגע יומיומי שחזר: שבת בלי כבדות, ישיבה ארוכה בלי לזוז כל חמש דקות.]</p>
+        <p class="testimonial-author">— [שם פרטי, עיר]</p>
+      </div>
+    </div>
+    <p class="testimonials-note">העדויות בדף הזה יוצגו רק כלשונן, מהודעות אמיתיות, באישור הכותבים.</p>
+  </section>
+
+  <!-- ─── 8. BONUSES ─── -->
+  <section class="bonus-section">
+    <div class="section-container">
+      <h2 class="section-title" style="text-align: center;">ולמי שמצטרף עכשיו — הוספתי</h2>
+    </div>
+    <p class="bonus-intro">לא כדי לנפח את ההצעה. כי בלי אלה, השבוע האמיתי שלך ינצח את השיטה.</p>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <span class="bonus-tag">בונוס 1</span>
+        <h3 class="bonus-title">מדריך שולחן שבת</h3>
+        <p class="bonus-desc">איך עוברים סעודות שבת מלאות — דגים, צ׳ולנט, קוגל — בלי להרגיש שאתה "מתחיל מחדש" כל יום ראשון. שבת נשארת שבת.</p>
+        <p class="bonus-value">שווי: ₪47 — כלול</p>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">בונוס 2</span>
+        <h3 class="bonus-title">עשר דקות לגב</h3>
+        <p class="bonus-desc">סדרת תרגול קצרה לשעות הישיבה — ליד הסטנדר, במשרד, בבית. הגב מקבל את מה שהוא צריך כדי להחזיק את היום.</p>
+        <p class="bonus-value">שווי: ₪39 — כלול</p>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">בונוס 3</span>
+        <h3 class="bonus-title">מסלול 21 הימים הראשונים</h3>
+        <p class="bonus-desc">דף סדר פשוט: מה עושים בכל יום, צעד אחד ביום. בלי להתלבט ובלי לתכנן — רק לפתוח ולעשות.</p>
+        <p class="bonus-value">שווי: ₪29 — כלול</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 9. COUNTER — מד מצטרפים (counter, לא countdown) ─── -->
+  <!-- COUNTER TEST VALUES: 63/150 (42%) — ערכי טסט. יוסי קובע ערכי אמת לפני עלייה לאוויר; גבריאל מעדכן. -->
+  <section class="counter-section">
+    <div class="counter-wrap">
+      <p class="counter-label">מצב ההרשמה למחיר ההשקה</p>
+      <div class="counter-numbers">
+        <span class="current">63</span><span class="total"> / 150</span>
+      </div>
+      <div class="counter-bar">
+        <div class="counter-fill" style="--progress: 42%"></div>
+      </div>
+      <p class="counter-text">
+        כבר <strong>63</strong> נרשמו במחיר ההשקה. <span style="font-size:.75rem;font-weight:600;color:var(--text-soft)">(ערכי טסט)</span><br>
+        כשנגיע ל-<strong>150</strong>, המחיר עולה ל-<strong>₪197</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── 10. PRICE + CTA ─── -->
+  <section class="price-section" id="price">
+    <div class="section-container">
+      <h2 class="section-title" style="text-align: center;">מחיר השקה — ל-150 הראשונים</h2>
+      <div class="price-box">
+        <div class="price-old">₪197</div>
+        <div class="price-now">₪97</div>
+        <p class="price-suffix">תשלום אחד. גישה מלאה לקורס ולכל הבונוסים.</p>
+        <!-- CARDCOM_PAYMENT_URL (main ₪97): גבריאל מחליף את href="#" בקישור הקארדקום של המוצר הראשי.
+             האורדרבאמפ ("הליבה שמחזיקה את הגב" — שם מאושר, הכרעת יוסי 11.06) מוגדר בעמוד התשלום של קארדקום, לא כאן. -->
+        <a class="price-cta js-buy" href="#">אני רוצה להתחיל — ₪97</a>
+        <p class="price-note">תשלום מאובטח דרך קארדקום · הגישה נשלחת מיד למייל</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 11. FAQ ─── -->
+  <section class="faq-section">
+    <div class="section-container">
+      <h2 class="section-title">שאלות שכולם שואלים</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">אין לי זמן. כמה זמן זה באמת דורש?</div>
+          <div class="faq-answer">שיעורים של חמש עד עשר דקות, ושתי יחידות תנועה בשבוע. פחות ממה שלוקחת הפסקת קפה בנחת. השיטה כולה בנויה על המינימום שמחזיק — לא על עוד עומס.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">אני לא בנוי לדיאטות.</div>
+          <div class="faq-answer">גם אני לא. ולכן אין כאן דיאטה. אין משקל, אין ספירות, אין רשימת איסורים. יש עיקרון אחד בצלחת ומתנה אחת מתוכננת ביום. אני אוכל המבורגר, שווארמה, פיצה — וזה עובד.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">צריך חדר כושר או ציוד?</div>
+          <div class="faq-answer">לא. הכל נעשה בבית, עם משקל הגוף בלבד. בלי מכון, בלי מנוי, בלי בגדים מיוחדים.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">אף פעם לא התאמנתי. זה בשבילי?</div>
+          <div class="faq-answer">במיוחד בשבילך. הקורס בנוי למי שמתחיל מאפס — כל תרגול מתחיל מהמדרגה הנמוכה ביותר ועולה רק כשהגוף שלך מוכן.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">איך מקבלים את הקורס?</div>
+          <div class="faq-answer">מיד אחרי התשלום נשלח אליך מייל עם פרטי הגישה. צופים מהטלפון או מהמחשב, מתי שנוח לך, והגישה נשארת אצלך.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">האם התשלום מאובטח?</div>
+          <div class="faq-answer">בהחלט. התשלום מתבצע דרך מערכת סליקה מאובטחת (קארדקום), בתקן הגבוה ביותר. הפרטים שלך מוגנים ולא נשמרים אצלנו.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 12. SHAI STORY ─── -->
+  <section class="authority-section">
+    <div class="authority-inner">
+      <div class="shai-photo-wrap">
+        <!-- IMG-SHAI — רפאל 4.1: shai-portrait.jpg — הפורטרט הרשמי מהמשפך החי (מבט ישיר, חולצה לבנה, רקע נקי) -->
+        <img src="images/shai-portrait.jpg"
+             alt="שי פרלא"
+             loading="lazy"
+             style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; border: 2px solid var(--gold);">
+      </div>
+      <div class="authority-content">
+        <span class="authority-label">המדריך שלך</span>
+        <h2 class="authority-name">שי פרלא</h2>
+        <p class="authority-text">
+          אני לא מאמן שנולד בחדר כושר. אני אבא, עובד, עם שולחן שבת מלא.<br><br>
+          בשלב מסוים הגב שלי התחיל לדבר אליי בכל ישיבה, והכוח היה נגמר הרבה לפני שהיום נגמר.
+          חיפשתי שיטה שאדם עם החיים שלי יכול להחזיק לאורך זמן. לא מצאתי. <strong>אז בניתי אחת.</strong><br><br>
+          היום אני אוכל המבורגר, שווארמה, פיצה. מתאמן פחות משעה. וזה עובד —
+          לא כי אני מיוחד, אלא כי השיטה קטנה מספיק כדי להישאר.<br><br>
+          קראתי לקורס <strong>נעשה ונשמע</strong> כי זה בדיוק הסדר:
+          קודם עושים צעד אחד קטן. ההבנה — והכוח — מגיעים תוך כדי.
+        </p>
+        <div class="authority-stats">
+          <div class="stat-item">
+            <div class="stat-num">2</div>
+            <div class="stat-label">תנועות בשבוע. זה הכל</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">שעה</div>
+            <div class="stat-label">האימון שלי אף פעם לא יותר</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">0</div>
+            <div class="stat-label">לא שוקלים. לא סופרים</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 13. GUARANTEE ─── -->
+  <section class="guarantee-section">
+    <div class="guarantee-seal">30 יום<br>אחריות<br>מלאה</div>
+    <h2 class="guarantee-title">אני עומד מאחורי זה</h2>
+    <p class="guarantee-text">
+      תיכנס לקורס. תעשה את הצעד הראשון.<br>
+      אם אחרי 30 יום לא הרגשת הבדל בתפקוד — מייל אחד ל-<strong>shaiperla@gufbari.com</strong>
+      ואתה מקבל את כל הכסף בחזרה. בלי טפסים ובלי שאלות.<br>
+      אני יכול להציע את זה כי אני חי את השיטה בעצמי, כל יום.
+    </p>
+  </section>
+
+  <!-- ─── FINAL CTA ─── -->
+  <section class="second-cta">
+    <p>הבדיקה שדחית כבר שנה עדיין מחכה לך. הצעד הראשון לוקח פחות מעשר דקות.</p>
+    <!-- CARDCOM_PAYMENT_URL (main ₪97): אותו קישור קארדקום כמו בסקציית המחיר. גבריאל מחליף את href="#". -->
+    <a class="cta-btn js-buy" href="#">נעשה. ואז נשמע — ₪97</a>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <p>ונשמרתם &copy; 2026 | כל הזכויות שמורות</p>
+    <p style="margin-top:8px;">
+      <a href="terms.html">תקנון ומדיניות פרטיות</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:shaiperla@gufbari.com">shaiperla@gufbari.com</a>
+    </p>
+  </footer>
+
+  <script>
+    // PIXEL: InitiateCheckout על כל כפתור רכישה (מעבר לקארדקום).
+    // גבריאל: אחרי שתחליף את ה-href בקישור קארדקום אמיתי — האירוע כבר מחווט.
+    (function () {
+      var buyButtons = document.querySelectorAll('.js-buy');
+      for (var i = 0; i < buyButtons.length; i++) {
+        buyButtons[i].addEventListener('click', function () {
+          if (typeof fbq === 'function') {
+            fbq('track', 'InitiateCheckout', { content_name: 'naase-venishma-front', value: 97, currency: 'ILS' });
+          }
+        });
+      }
+    })();
+  </script>
+
+  <!-- ─── ACCESSIBILITY WIDGET (קונבנציה קיימת מהדפים החיים) ─── -->
+  <style>
+    #a11y-btn { position: fixed; bottom: 18px; left: 18px; z-index: 9999; width: 52px; height: 52px; border-radius: 50%; background: #fed712; color: #2d2d2d; border: none; cursor: pointer; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
+    #a11y-panel { position: fixed; bottom: 80px; left: 18px; z-index: 9999; background: #2e2e2e; border: 2px solid #fed712; border-radius: 12px; padding: 16px; width: 240px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); display: none; }
+    #a11y-panel.open { display: block; }
+    #a11y-panel h4 { color: #fed712; font-size: 1rem; margin-bottom: 12px; text-align: center; }
+    #a11y-panel button { display: block; width: 100%; margin-bottom: 8px; padding: 10px; background: #3a3a3a; color: #fff; border: 1px solid rgba(254,215,18,0.35); border-radius: 7px; cursor: pointer; font-family: 'Rubik', sans-serif; font-size: 0.92rem; text-align: right; }
+    #a11y-panel button:hover { background: #444; border-color: #fed712; }
+    body.a11y-contrast { filter: contrast(1.35); }
+    body.a11y-grayscale { filter: grayscale(1); }
+    body.a11y-links a { text-decoration: underline !important; outline: 2px solid #fed712 !important; }
+    body.a11y-readable, body.a11y-readable * { font-family: Arial, sans-serif !important; letter-spacing: 0.3px; }
+  </style>
+  <button id="a11y-btn" aria-label="פתיחת תפריט נגישות" title="נגישות">♿</button>
+  <div id="a11y-panel" role="dialog" aria-label="תפריט נגישות">
+    <h4>נגישות</h4>
+    <button data-a11y="font-up">הגדל טקסט (A+)</button>
+    <button data-a11y="font-down">הקטן טקסט (A-)</button>
+    <button data-a11y="contrast">ניגודיות גבוהה</button>
+    <button data-a11y="grayscale">גווני אפור</button>
+    <button data-a11y="links">הדגשת קישורים</button>
+    <button data-a11y="readable">פונט קריא</button>
+    <button data-a11y="reset">איפוס</button>
+  </div>
+  <script>
+    (function () {
+      var btn = document.getElementById('a11y-btn');
+      var panel = document.getElementById('a11y-panel');
+      var root = document.documentElement;
+      var step = 0;
+      function load() {
+        try {
+          var s = JSON.parse(localStorage.getItem('a11y') || '{}');
+          step = s.step || 0;
+          if (step) root.style.fontSize = (100 + step * 10) + '%';
+          ['contrast','grayscale','links','readable'].forEach(function (k) {
+            if (s[k]) document.body.classList.add('a11y-' + k);
+          });
+        } catch (e) {}
+      }
+      function save() {
+        try {
+          localStorage.setItem('a11y', JSON.stringify({
+            step: step,
+            contrast: document.body.classList.contains('a11y-contrast'),
+            grayscale: document.body.classList.contains('a11y-grayscale'),
+            links: document.body.classList.contains('a11y-links'),
+            readable: document.body.classList.contains('a11y-readable')
+          }));
+        } catch (e) {}
+      }
+      btn.addEventListener('click', function () { panel.classList.toggle('open'); });
+      panel.addEventListener('click', function (e) {
+        var a = e.target.getAttribute && e.target.getAttribute('data-a11y');
+        if (!a) return;
+        if (a === 'font-up' && step < 5) { step++; root.style.fontSize = (100 + step * 10) + '%'; }
+        else if (a === 'font-down' && step > -2) { step--; root.style.fontSize = (100 + step * 10) + '%'; }
+        else if (a === 'reset') {
+          step = 0; root.style.fontSize = '';
+          document.body.classList.remove('a11y-contrast','a11y-grayscale','a11y-links','a11y-readable');
+        }
+        else if (['contrast','grayscale','links','readable'].indexOf(a) > -1) {
+          document.body.classList.toggle('a11y-' + a);
+        }
+        save();
+      });
+      load();
+    })();
+  </script>
+
+</body>
+</html>
